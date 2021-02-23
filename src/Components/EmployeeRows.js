@@ -1,15 +1,20 @@
 import React from "react";
 
-function EmployeeRows() {
+function EmployeeRows(props) {
     return (
-        <tr>
-            <th scope="row">0</th>
-            <td><img src="https://randomuser.me/api/portraits/thumb/men/34.jpg"/></td>
-            <td>Joshua Lewis</td>
-            <td>0714-324-172</td>
-            <td>joshua.lewis@example.com</td>
-            <td>Lisburn, United Kingdom</td>
-        </tr>
+        props.employees.map((item, index) => {
+            return (
+                <tr key={index}>
+                <th scope="row">{item.id.value}</th>
+                <td><img src={item.picture.thumbnail}/></td>
+                <td>{item.name.first} {item.name.last}</td>
+                <td>{item.cell}</td>
+                <td>{item.email}</td>
+                <td>{item.location.city}, {item.location.country}</td>
+                </tr>
+            )
+            
+        })
     )
 };
 
