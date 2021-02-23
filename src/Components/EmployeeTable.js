@@ -22,13 +22,18 @@ class EmployeeTable extends Component {
         console.log("yo")
     }
 
+    filterById = event => {
+        event.preventDefault();
+        this.setState({employees: this.state.employees.filter(item => item.id.value)})
+    }
+
     render() {
         return (
             <div>
                 <table className="table">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col"><i onClick={this.filterById} className="fas fa-caret-up" style={{color: "red", cursor: "pointer"}}></i> ID</th>
                             <th scope="col">Image</th>
                             <th scope="col"><i onClick={this.sortByName} className="fas fa-caret-up" style={{color: "orange", cursor: "pointer"}}></i> Name</th>
                             <th scope="col">Cell</th>
